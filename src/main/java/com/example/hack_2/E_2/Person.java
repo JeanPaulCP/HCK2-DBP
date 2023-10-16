@@ -1,5 +1,21 @@
 package com.example.hack_2.E_2;
 
+import com.example.hack_2.E_1.Group;
+import jakarta.persistence.*;
+import java.util.List; // Importamos la clase List
+
+@Entity
+@Table(name = "person")
 public class Person{
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "id", nullable = false)
+    private Long id;
+
+    private String name;
+
+    @OneToMany
+    private List<Group> groups;
 
 }
