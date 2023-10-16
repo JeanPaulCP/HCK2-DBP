@@ -3,6 +3,7 @@ package com.example.hack_2.E_1;
 import com.example.hack_2.E_2.Person;
 import jakarta.persistence.*;
 import java.util.List; // Importamos la clase List
+import java.util.Set;
 
 @Entity
 @Table(name = "groups")
@@ -16,13 +17,13 @@ public class Group{
     private String name;
 
     @OneToMany
-    private List<Person> persons;
+    private Set<Person> persons;
 
     // Constructores
 
     public Group() {} // Constructor vacío
 
-    public Group(Long id, String name, List<Person> persons) {
+    public Group(Long id, String name, Set<Person> persons) {
         this.id = id;
         this.name = name;
         this.persons = persons;
@@ -38,7 +39,7 @@ public class Group{
         return this.name;
     }
 
-    public List<Person> getPersons() {
+    public Set<Person> getPersons() {
         return this.persons;
     }
 
@@ -52,7 +53,7 @@ public class Group{
         this.name = name;
     }
 
-    public void setPersons(List<Person> persons) {
+    public void setPersons(Set<Person> persons) {
         this.persons = persons;
     }
 
