@@ -56,10 +56,15 @@ public class GroupController {
         }
     }
 
-//    @GetMapping("/{id}/persons")
-//    public Set<Person> getPersonsInGroup(@PathVariable Long id) {
-//        Optional<Group> group = groupRepository.findById(id);
-//        return group.map(Group::getPersons).orElse(Collections.emptySet());
-//    }
+    @GetMapping("/{id}/persons")
+    public ResponseEntity<Set<Person>> getPersonsInGroup(@PathVariable Long id) {
+        Optional<Group> group = groupRepository.findById(id);
+        if (group.isPresent()) {
+            Set<Person> persons = group.get().getPersons();
+            return ResponseEntity.ok(persons);
+        } else {
+            return ResponseEntity.notFound().build();
+        }
+    }
 
 }

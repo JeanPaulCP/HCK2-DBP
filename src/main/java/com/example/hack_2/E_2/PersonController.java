@@ -56,10 +56,15 @@ public class PersonController {
         }
     }
 
-//    @GetMapping("/{id}/groups")
-//    public Set<Group> getGroupsOfPerson(@PathVariable Long id) {
-//        Optional<Person> person = personRepository.findById(id);
-//        return person.map(Person::getGroups).orElse(Collections.emptySet());
-//    }
+    @GetMapping("/{id}/groups")
+    public ResponseEntity<Set<Group>> getGroupsOfPerson(@PathVariable Long id) {
+        Optional<Person> person = personRepository.findById(id);
+        if (person.isPresent()) {
+            Set<Group> groups = person.get().getGroups();
+            return ResponseEntity.ok(groups);
+        } else {
+            return ResponseEntity.notFound().build();
+        }
+    }
 
 }
