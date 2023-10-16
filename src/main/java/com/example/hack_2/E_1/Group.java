@@ -5,7 +5,7 @@ import jakarta.persistence.*;
 import java.util.List; // Importamos la clase List
 
 @Entity
-@Table(name = "group")
+@Table(name = "groups")
 public class Group{
 
     @Id
