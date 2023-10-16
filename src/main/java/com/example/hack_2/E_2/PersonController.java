@@ -56,7 +56,7 @@ public class PersonController {
         }
     }
 
-    @GetMapping("/{id}/groups")
+    @GetMapping("/groups/{id}")
     public ResponseEntity<Set<Group>> getGroupsOfPerson(@PathVariable Long id) {
         Optional<Person> person = personRepository.findById(id);
         if (person.isPresent()) {
