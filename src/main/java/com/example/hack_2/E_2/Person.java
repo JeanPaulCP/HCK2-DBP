@@ -2,7 +2,6 @@ package com.example.hack_2.E_2;
 
 import com.example.hack_2.E_1.Group;
 import jakarta.persistence.*;
-import java.util.List; // Importamos la clase List
 import java.util.Set;
 
 @Entity
