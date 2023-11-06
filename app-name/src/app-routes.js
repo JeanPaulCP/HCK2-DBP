@@ -1,4 +1,4 @@
-import { HomePage, TasksPage, ProfilePage, GroupsPage } from './pages';
+import { HomePage, TasksPage, ProfilePage, GroupsPage, PersonsPage} from './pages';
 import { withNavigationWatcher } from './contexts/navigation';
 
 const routes = [
@@ -17,6 +17,10 @@ const routes = [
     {
         path: '/groups',
         element: GroupsPage
+    },
+    {
+        path: '/persons',
+        element: PersonsPage
     }
 ];
 

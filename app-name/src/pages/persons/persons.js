@@ -1,28 +1,29 @@
 import { useEffect, useState } from "react"
-import { fetchGroups } from "../../api/dataService"
+import { fetchPersons } from "../../api/dataService"
 import 'devextreme/data/odata/store';
 import DataGrid, { Column } from 'devextreme-react/data-grid';
 import React from 'react';
 
-export default function Group() {
+export default function Persons() {
     // Se declara un estado llamado 'groupsWithPersonCount' utilizando useState.
-    const [groupsWithPersonCount, setGroupsWithPersonCount] = useState();
-
+    const [personsWithGroupsCount, setPersonsWithGroupsCount] = useState();
+    // groupsWithPersonCount es un array de objetos con las propiedades 'id', 'name' y 'personCount'.
+    // setGroupsWithPersonCount es una función que se utiliza para modificar el estado 'groupsWithPersonCount'.
     // Utiliza useEffect para realizar la solicitud a la API cuando el componente se monta.
     useEffect(() => {
-        fetchGroups()
+        fetchPersons()
             .then((response) => {
                 // Extrae los datos de respuesta de la solicitud.
-                const groupsData = response.data;
+                const personsData = response.data;
 
                 // Registra los datos de grupos en la consola.
-                console.log(groupsData);
+                console.log(personsData);
 
                 // Modifica el estado 'groupsWithPersonCount' transformando los datos de grupos.
-                setGroupsWithPersonCount(groupsData.map(group => ({
-                    id: group.id,
-                    name: group.name,
-                    persons: group.persons ? group.persons.length : 0
+                setPersonsWithGroupsCount(personsData.map(person => ({
+                    id: person.id,
+                    name: person.name,
+                    groups: person.groups ? person.groups.length : 0
                 })))
             })
             .catch((error) => {
@@ -35,7 +36,7 @@ export default function Group() {
         <React.Fragment>
             <DataGrid
                 // Establece la fuente de datos para el DataGrid como 'groupsWithPersonCount'.
-                dataSource={groupsWithPersonCount} // Establece el foco en la primera fila del DataGrid.
+                dataSource={personsWithGroupsCount} // Establece el foco en la primera fila del DataGrid.
 
                 // Muestra bordes alrededor de las celdas de la tabla.
                 showBorders={true} // Establece el foco en la primera fila del DataGrid.
@@ -50,12 +51,6 @@ export default function Group() {
                 <Column dataField="name"
                     // Define el título de la columna como 'Name'.
                         caption="Name"
-                />
-
-                {/* Define la tercera columna con el campo 'personCount' y un título personalizado 'Number of Persons'. */}
-                <Column dataField="persons" caption="Persons"
-                    // Define el tipo de datos de la columna como 'number'.
-                        dataType="number"
                 />
 
             </DataGrid>
