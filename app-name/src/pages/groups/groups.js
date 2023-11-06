@@ -22,7 +22,8 @@ export default function Group() {
                 setGroupsWithPersonCount(groupsData.map(group => ({
                     id: group.id,
                     name: group.name,
-                    persons: group.persons ? group.persons.length : 0
+                    persons: group.persons ? group.persons.length : 0,
+                    typeGroup: group.typeGroup.id
                 })))
             })
             .catch((error) => {
@@ -54,6 +55,12 @@ export default function Group() {
 
                 {/* Define la tercera columna con el campo 'personCount' y un título personalizado 'Number of Persons'. */}
                 <Column dataField="persons" caption="Persons"
+                    // Define el tipo de datos de la columna como 'number'.
+                        dataType="number"
+                />
+
+                {/* Define la tercera columna con el campo 'personCount' y un título personalizado 'Number of Persons'. */}
+                <Column dataField="typeGroup" caption="Type of Group"
                     // Define el tipo de datos de la columna como 'number'.
                         dataType="number"
                 />

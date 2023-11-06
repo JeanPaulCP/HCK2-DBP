@@ -2,6 +2,7 @@ package com.example.hack_2.entities;
 
 import java.util.Set;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
 @Entity
@@ -15,6 +16,7 @@ public class TypeGroup
     private String name;
 
     @OneToMany
+    @JsonIgnore
     private Set<Group> groups;
 
     // Constructores
