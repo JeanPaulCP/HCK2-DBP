@@ -18,7 +18,9 @@ import com.example.hack_2.services.GroupService;
 @RequestMapping("/groups")
 @CrossOrigin(origins = "http://localhost:3000")
 public class GroupController {
-    private final GroupService groupService;
+
+    @Autowired
+    private GroupService groupService;
 
     @Autowired
     public GroupController(GroupService groupService) {
